@@ -1,7 +1,6 @@
 import React from 'react'
 import { AppBar, Toolbar, Typography } from '@material-ui/core'
 import { makeStyles }from '@material-ui/core'
-import { Pinterest } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -23,10 +22,10 @@ export default function AppNavigator() {
 
   return (
     <div>
-        <AppBar className={classes.AppBar} position='fixed' variant='h6'>
+        <AppBar className={classes.AppBar} position="fixed">
             <Toolbar>
                 <Link to="/" className={classes.link}>
-                    <Typography className={classes.title}>Pokedex</Typography>
+                    <Typography className={classes.title} variant="h6">Pokedex</Typography>
                 </Link> 
             </Toolbar>
         </AppBar>

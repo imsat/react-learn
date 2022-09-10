@@ -7,7 +7,7 @@ export default function App() {
   return (
      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Pokedex />} exact /> 
+          <Route path="/" element={<Pokedex />} /> 
         </Routes>
      </BrowserRouter>
   )
