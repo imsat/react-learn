@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import SeasonDisplay from './SeasonDisplay'
 
 const el = document.getElementById('root')
 
@@ -13,6 +12,7 @@ class App extends React.Component {
         this.state = {
             lat: null,
             lon: null,
+            errorMessage: ''
         }
     }
 
@@ -26,13 +26,19 @@ class App extends React.Component {
                     lon: position.coords.longitude 
                 })
             },
-            (error) => console.log(error),
+            (error) => {
+                // console.log(error);
+                // this.setState({ errorMessage: error.message});
+                // alert('Something went wrong!')
+            },
         );
     
         return <div>
             Latitude: { this.state.lat }
             <br />
             Longitude : { this.state.lon }
+            <br />
+            <p>Error : { this.errorMessage }</p>
             </div>
     }
 }
