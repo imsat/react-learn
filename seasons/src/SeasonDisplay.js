@@ -16,7 +16,7 @@ const SeasonDisplay = (props) => {
 
     return (
         <div className="">
-            { text }
+            <h1>{ text }</h1>
         </div>
     )
 }
