@@ -1,45 +1,50 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import SeasonDisplay from './SeasonDisplay'
 
 const el = document.getElementById('root')
 
 const root =  ReactDOM.createRoot(el)
 
 class App extends React.Component {
-    constructor(props) {
-        super(props)
+    state = {
+        lat: null,
+        lon: null,
+        errorMessage: ''
+    }
 
-        this.state = {
-            lat: null,
-            lon: null,
-            errorMessage: ''
-        }
+    componentDidMount() {
+        //optional
+        // console.log('Component was rendered to the screen')
+        window.navigator.geolocation.getCurrentPosition(
+            (position) => this.setState({ 
+                    lat: position.coords.latitude, 
+                    lon: position.coords.longitude 
+                })
+            ,
+            (error) => this.setState({ errorMessage: 'Something went wrong!!'}) 
+        )
+    }
+
+    // componentDidUpdate() {
+    //     //optional
+    //     console.log('Component was just u[dated - it rerendered!')
+    // }
+
+    componentWillUnmount() {
+        //optional
+        // cleanup ufter our c omponent mounted
     }
 
 
     render() {
-        // console.log('render')
-        window.navigator.geolocation.getCurrentPosition(
-            (position) => {
-                this.setState({ 
-                    lat: position.coords.latitude, 
-                    lon: position.coords.longitude 
-                })
-            },
-            (error) => {
-                // console.log(error);
-                // this.setState({ errorMessage: error.message});
-                // alert('Something went wrong!')
-            },
-        );
-    
-        return <div>
-            Latitude: { this.state.lat }
-            <br />
-            Longitude : { this.state.lon }
-            <br />
-            <p>Error : { this.errorMessage }</p>
-            </div>
+        if(this.state.errorMessage && (!this.state.lat && !this.state.lon) ) { 
+            return <div>Error: { this.state.errorMessage}</div>
+        }else if(!this.state.errorMessage && (this.state.lat && this.state.lon) ){
+            return <SeasonDisplay lat={ this.state.lat } />
+        }else{
+            return <div>Loading...</div>
+        }
     }
 }
 
