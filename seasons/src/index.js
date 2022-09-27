@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import SeasonDisplay from './SeasonDisplay'
+import Spinner from './Spinner'
+import Clock   from './Clock'
 
 const el = document.getElementById('root')
 
@@ -36,18 +38,27 @@ class App extends React.Component {
         // cleanup ufter our c omponent mounted
     }
 
-
-    render() {
+    renderContent() {
         if(this.state.errorMessage && (!this.state.lat && !this.state.lon) ) { 
             return <div>Error: { this.state.errorMessage}</div>
         }else if(!this.state.errorMessage && (this.state.lat && this.state.lon) ){
             return <SeasonDisplay lat={ this.state.lat } />
         }else{
-            return <div>Loading...</div>
+            return <Spinner message="Please accept location request" />
         }
+    }
+
+
+    render() {
+      return (
+        <div>
+            { this.renderContent() }
+        </div>
+      )
     }
 }
 
 
 
 root.render(<App />)
+// root.render(<Clock />)
