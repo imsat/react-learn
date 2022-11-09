@@ -27,7 +27,6 @@ const Accordion = ({ items }) => {
   return (
     <div className="ui styled accordion">
       {renderedItems}
-      <h2>{activeIndex}</h2>
     </div>
   );
 };
