@@ -5,7 +5,7 @@ const Link = ({ href, className, children }) => {
         if(e.metaKey || e.ctrKey){
            return 
         }
-
+ 
         e.preventDefault()
         window.history.pushState({}, '', href)
 
