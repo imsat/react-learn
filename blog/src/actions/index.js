@@ -1,5 +1,14 @@
 import memoize from "lodash/memoize";
+import map from "lodash/map";
+import uniq from "lodash/uniq";
 import jsonPlaceholder from "../apis/jsonPlaceHolder";
+
+
+export const fetchPostAndUsers = () => async (dispatch, getState) => {
+  await dispatch(fetchPosts());
+  const userIds = uniq(map(getState().posts, 'userId'));
+  userIds.forEach(id => dispatch(fetchUser(id)));
+}
 
 export const fetchPosts = () => async (dispatch) => {
   const response = await jsonPlaceholder.get("/posts");
