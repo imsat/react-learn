@@ -3,10 +3,10 @@ import { useRouter } from 'next/router'
 
 export default function BookDetails() {
     const router = useRouter()
-    const {yy} = router.query
+    const {id} = router.query
     console.log(router);
     
     return (
-      <h1>Book Details {yy}</h1>
+      <h1>Book Details {id}</h1>
     )
   }
