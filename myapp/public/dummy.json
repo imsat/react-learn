@@ -1,0 +1,9 @@
+{
+    "books": [
+        {"id": "1", "name": "Mindset", "description": "Mindset Book"},
+        {"id": "2", "name": "Atomic Habits", "description": "Atomic Habits Book"},
+        {"id": "3", "name": "Rich Dad Poor Dad", "description": "Rich Dad Poor Dad Book"},
+        {"id": "4", "name": "Make Money", "description": "Make Money Book"},
+        {"id": "5", "name": "Love", "description": "Love Book"}
+    ]
+}
