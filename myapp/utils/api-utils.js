@@ -3,3 +3,9 @@ export async function getBooks() {
     const data = await res.json();
     return data
 }
+
+export async function getBookDetails(id) {
+    const books = await getBooks()
+    const book = books.find(book => book.id === id);
+    return book
+}

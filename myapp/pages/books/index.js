@@ -28,7 +28,7 @@ export async function getStaticProps() {
   const books = await getBooks();
   return {
     props: {
-      books: books,
+      books,
     }
   };
 }
